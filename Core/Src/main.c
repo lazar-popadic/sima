@@ -84,7 +84,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   /* USER CODE BEGIN 2 */
-
+  timer_init();
+  timer_start_sys_time();
   /* USER CODE END 2 */
 
   /* Infinite loop */
