@@ -58,7 +58,7 @@ void
 TIM6_DACUNDER_IRQHandler ()
 {
   // poziva se svake milisekunde
-  // proveri da li je stvarno TIM2 pozvao rutinu
+  // proveri da li je stvarno TIM6 pozvao rutinu
   if ((TIM6->SR & (0b1 << 0)) == (0b1 << 0))
     {
       TIM6->SR &= ~(0b1 << 0);	// da bi sledeci put mogli da detektujemo prekid
