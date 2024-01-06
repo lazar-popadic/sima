@@ -11,7 +11,7 @@
 #define START_TIME 90*1000
 #define END_TIME 100*1000
 
-volatile uint32_t sys_time_ms = 0; //volatile da kompajler ne vrsi optimizaciju
+volatile uint32_t sys_time_ms = 0;
 
 static void
 tim6_init ();

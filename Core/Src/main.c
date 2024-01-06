@@ -42,7 +42,8 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+extern volatile uint32_t sys_time_ms;
+volatile uint16_t sys_time_s = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -86,6 +87,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   timer_init();
   timer_start_sys_time();
+  io_init();
+  led_on(true);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -95,6 +98,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+      sys_time_s = sys_time_ms * 0.001;
+      if (sys_time_s < 10)
+	led_on(false);
+      else
+	led_on(true);
   }
   /* USER CODE END 3 */
 }
