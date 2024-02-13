@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2023 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -31,10 +31,11 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "../Lib/timer/timer.h"
-#include "../Lib/io/io.h"
-#include <stdint.h>
 #include <stdbool.h>
+#include "../Lib/Periferije/IO/IO.h"
+#include "../Lib/Periferije/Tajmer/Tajmer.h"
+#include "../Lib/Periferije/UART/UART.h"
+#include "../Lib/Moduli/AX12a/AX12a.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

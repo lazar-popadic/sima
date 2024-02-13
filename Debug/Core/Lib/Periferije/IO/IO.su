@@ -1,0 +1,3 @@
+../Core/Lib/Periferije/IO/IO.c:14:1:io	8	static
+../Core/Lib/Periferije/IO/IO.c:20:1:portB_init	4	static
+../Core/Lib/Periferije/IO/IO.c:32:1:io_led	16	static

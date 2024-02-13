@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2023 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -42,8 +42,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-extern volatile uint32_t sys_time_ms;
-volatile uint16_t sys_time_s = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -85,24 +84,60 @@ int main(void)
 
   /* Initialize all configured peripherals */
   /* USER CODE BEGIN 2 */
-  timer_init();
-  timer_start_sys_time();
-  io_init();
-  led_on(true);
+  io();
+  tajmer_init();
+  UART_init();
+
+  __enable_irq ();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  /*uint8_t stanje= 0;
+     bool flagFSM = true;
+     uint32_t cekanje =0;
+
+     uint8_t ledon[]={0xff, 0xff, 0x01, 0x04, 0x03, 0x19, 0x01, 0xDD};
+     uint8_t ledoff[]={0xff, 0xff, 0x01, 0x04, 0x03, 0x19, 0x01, 0xDE};
+
+     uint8_t move1[]={0xff, 0xff, 0x01, 0x05, 0x03, 0x1E, 0x00, 0x00, 0xD8};
+     uint8_t move2[]={0xff, 0xff, 0x01, 0x05, 0x03, 0x1E, 0xff, 0x03, 0xD6};
+
+     uint8_t ping[]={0xff, 0xff, 0x01, 0x02, 0x01, 0xFB}; */
+
+  uint8_t ledon_b[] =
+      { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x01, 0xE0 };
+    uint8_t ledoff_b[] =
+      { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x00, 0xE1 };
   while (1)
   {
     /* USER CODE END WHILE */
+	  ax_angle_move(6, LEVO, 200);
+	      TajmerDelay(200);
+	  	  ax_speed_move(5, true);
+	  	  TajmerDelay(500);
+	  	  ax_angle_move(5, 200, 2023);
+	  	  TajmerDelay(50);
+	  	  ax_angle_move(6, PRAVO, 200);
+	  	  TajmerDelay(2000);
+//	  	  ax_angle_move(6, LEVO, 300);
+//	  	  TajmerDelay(600);
+	  	  TajmerDelay(3000);
+	  	  ax_angle_move(5, 0, 0);
+	  	  TajmerDelay(100000);
+
+
+//	  TajmerDelay(500);
+//	  xl_led(3, 1);
+//	  TajmerDelay(500);
+//	  xl_led(3, 2);
+//	  TajmerDelay(500);
+//	  xl_led(3, 3);
+//	  TajmerDelay(500);
+//	  xl_led(3, 4);
+//	  TajmerDelay(500);
 
     /* USER CODE BEGIN 3 */
-      sys_time_s = sys_time_ms * 0.001;
-      if (sys_time_s < 10)
-	led_on(false);
-      else
-	led_on(true);
   }
   /* USER CODE END 3 */
 }
