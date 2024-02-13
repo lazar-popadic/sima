@@ -80,22 +80,13 @@ ax_speed_move (uint8_t id, bool Status)
 }
 
 void
-xl_led (uint8_t id, uint8_t LEDColor)
+xl_ping (uint8_t id)
 {
 
+    uint8_t xl_move[] =
+    { 0xff, 0xff, 0xfd, 0x00, id, 0x03, 0x00, 0x01, 0x31, 0x42};
 
-  uint8_t xl_move_no_crc[] =
-    { 0xff, 0xff, 0xfd, 0x00, id, 0x06, 0x00, 0x03, 0x19, 0x00, LEDColor};
-
-  uint8_t crc16, crc_l, crc_h;
-  crc16 = update_crc (0, xl_move_no_crc, 11);
-  crc_l = (crc16 & 0x00FF);
-  crc_h = (crc16 >> 8) & 0x00FF;
-
-  uint8_t xl_move[] =
-    { 0xff, 0xff, 0xfd, 0x00, id, 0x06, 0x00, 0x03, 0x19, 0x00, LEDColor, crc_l, crc_h };
-
-  for (uint8_t i = 0; i < 13; i++)
+  for (uint8_t i = 0; i < 10; i++)
     {
       UART_send_byte(xl_move[i]);
     }

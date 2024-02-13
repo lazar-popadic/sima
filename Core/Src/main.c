@@ -109,33 +109,26 @@ int main(void)
       { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x01, 0xE0 };
     uint8_t ledoff_b[] =
       { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x00, 0xE1 };
+    uint8_t RxPacket[100] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
-	  ax_angle_move(6, LEVO, 200);
-	      TajmerDelay(200);
-	  	  ax_speed_move(5, true);
-	  	  TajmerDelay(500);
-	  	  ax_angle_move(5, 200, 2023);
-	  	  TajmerDelay(50);
-	  	  ax_angle_move(6, PRAVO, 200);
-	  	  TajmerDelay(2000);
-//	  	  ax_angle_move(6, LEVO, 300);
-//	  	  TajmerDelay(600);
-	  	  TajmerDelay(3000);
-	  	  ax_angle_move(5, 0, 0);
-	  	  TajmerDelay(100000);
+//	  ax_angle_move(6, LEVO, 200);
+//	  TajmerDelay(200);
+//	  ax_speed_move(5, true);
+//	  TajmerDelay(500);
+//	  ax_angle_move(5, 200, 2023);
+//	  TajmerDelay(25);
+//	  ax_angle_move(6, PRAVO, 200);
+//	  TajmerDelay(2000);
+//	  TajmerDelay(3000);
+//	  ax_angle_move(5, 0, 0);
+//	  TajmerDelay(100000);
 
-
-//	  TajmerDelay(500);
-//	  xl_led(3, 1);
-//	  TajmerDelay(500);
-//	  xl_led(3, 2);
-//	  TajmerDelay(500);
-//	  xl_led(3, 3);
-//	  TajmerDelay(500);
-//	  xl_led(3, 4);
-//	  TajmerDelay(500);
+     TajmerDelay(500);
+     xl_ping(3);
+     RxPacket=UART_read();
+     TajmerDelay(5000);
 
     /* USER CODE BEGIN 3 */
   }
