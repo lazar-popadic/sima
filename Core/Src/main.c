@@ -126,8 +126,7 @@ int main(void)
 //	  TajmerDelay(100000);
 
      TajmerDelay(500);
-     xl_ping(3);
-     RxPacket=UART_read();
+     xl_ping(2, 3);
      TajmerDelay(5000);
 
     /* USER CODE BEGIN 3 */
