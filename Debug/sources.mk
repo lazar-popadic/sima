@@ -23,6 +23,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 Core/Lib/Moduli/AX12a \
+Core/Lib/Moduli/Odometrija \
 Core/Lib/Periferije/IO \
 Core/Lib/Periferije/Tajmer \
 Core/Lib/Periferije/UART \

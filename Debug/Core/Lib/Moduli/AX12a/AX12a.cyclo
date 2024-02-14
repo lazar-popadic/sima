@@ -1,4 +1,4 @@
 ../Core/Lib/Moduli/AX12a/AX12a.c:29:1:ax_angle_move	2
 ../Core/Lib/Moduli/AX12a/AX12a.c:51:1:ax_speed_move	4
-../Core/Lib/Moduli/AX12a/AX12a.c:83:1:xl_led	2
-../Core/Lib/Moduli/AX12a/AX12a.c:105:1:update_crc	2
+../Core/Lib/Moduli/AX12a/AX12a.c:83:1:xl_ping	2
+../Core/Lib/Moduli/AX12a/AX12a.c:96:1:update_crc	2

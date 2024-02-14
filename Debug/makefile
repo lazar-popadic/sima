@@ -15,6 +15,7 @@ RM := rm -rf
 -include Core/Lib/Periferije/UART/subdir.mk
 -include Core/Lib/Periferije/Tajmer/subdir.mk
 -include Core/Lib/Periferije/IO/subdir.mk
+-include Core/Lib/Moduli/Odometrija/subdir.mk
 -include Core/Lib/Moduli/AX12a/subdir.mk
 -include objects.mk
 
@@ -64,8 +65,8 @@ all: main-build
 main-build: Simeon.elf secondary-outputs
 
 # Tool invocations
-Simeon.elf Simeon.map: $(OBJS) $(USER_OBJS) C:\Users\User\STM32CubeIDE\workspace_1.13.2\Simeon\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Simeon.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\User\STM32CubeIDE\workspace_1.13.2\Simeon\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Simeon.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Simeon.elf Simeon.map: $(OBJS) $(USER_OBJS) C:\Users\User\Documents\sima\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Simeon.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\User\Documents\sima\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Simeon.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

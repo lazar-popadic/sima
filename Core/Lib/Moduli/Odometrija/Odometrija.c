@@ -17,17 +17,17 @@ float V_T =0; //brzina AX 1023 -> 114rpm/obrtaja u minuti -> 1.9 obrtaja u sekun
 float Theta_T=0;
 
 
-void
-GdeSam (uint8_t stanje, float ugao)
-{
-  switch (stanje) {
-	case 1: // pravo
-
-		break;
-	case 2: // skretanje
-
-		break;
-	default:
-		break;
-}
-}
+//void
+//GdeSam (uint8_t stanje, float ugao)
+//{
+//  switch (stanje) {
+//	case 1: // pravo
+//
+//		break;
+//	case 2: // skretanje
+//
+//		break;
+//	default:
+//		break;
+//}
+//}
