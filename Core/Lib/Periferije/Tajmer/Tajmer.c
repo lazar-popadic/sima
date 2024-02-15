@@ -7,11 +7,18 @@
 
 #include "../../Periferije/Tajmer/Tajmer.h"
 
+#include "../../Moduli/Senzor/Senzor.h"
+
 static void
 tim2_init ();
 
 volatile uint32_t sys_time_ms = 0;
 bool flag_delay = true;
+
+volatile uint8_t sensors_case_timer = 0;
+volatile bool sensors_state = false;
+extern uint8_t previous_tactic_state;
+extern uint8_t tactic_state;
 
 void
 tajmer_init()
@@ -80,4 +87,16 @@ TIM2_IRQHandler ()
 
       sys_time_ms++;
     }
+
+//  switch (sensors_case_timer) {
+//	case SENSOR_JJ:
+//		sensors_state = sensor_JedanJedini();
+//		break;
+//	case SENSORS_OFF:
+//		  sensors_state = false;
+//		  break;
+//	default:
+//		  sensors_state = false;
+//		break;
+//    }
 }

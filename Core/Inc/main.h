@@ -36,6 +36,8 @@ extern "C" {
 #include "../Lib/Periferije/Tajmer/Tajmer.h"
 #include "../Lib/Periferije/UART/UART.h"
 #include "../Lib/Moduli/AX12a/AX12a.h"
+#include "../Lib/Moduli/Odometrija/Odometrija.h"
+#include "../Lib/Moduli/Senzor/Senzor.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

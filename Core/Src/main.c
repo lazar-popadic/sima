@@ -87,6 +87,7 @@ int main(void)
   io();
   tajmer_init();
   UART_init();
+  sensor_Init();
 
   __enable_irq ();
   /* USER CODE END 2 */
@@ -109,7 +110,7 @@ int main(void)
       { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x01, 0xE0 };
     uint8_t ledoff_b[] =
       { 0xff, 0xff, 0xfe, 0x04, 0x03, 0x19, 0x00, 0xE1 };
-    uint32_t RxPacket = 0;
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -125,15 +126,8 @@ int main(void)
 //	  ax_angle_move(5, 0, 0);
 //	  TajmerDelay(100000);
 
-     TajmerDelay(500);
-     xl_angle_move(3, 200);
-     TajmerDelay(500);
-     xl_angle_move(2, 700);
-     TajmerDelay(500);
-     xl_angle_move(3, 700);
-     TajmerDelay(500);
-     xl_angle_move(2, 200);
-     TajmerDelay(500);
+
+
 
     /* USER CODE BEGIN 3 */
   }

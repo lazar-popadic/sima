@@ -1,0 +1,3 @@
+../Core/Lib/Moduli/Senzor/Senzor.c:19:1:sensor_Init	8	static
+../Core/Lib/Moduli/Senzor/Senzor.c:25:1:sensor_IO_init	4	static
+../Core/Lib/Moduli/Senzor/Senzor.c:33:1:sensor_JedanJedini	4	static

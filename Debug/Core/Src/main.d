@@ -26,7 +26,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/../Lib/Periferije/IO/IO.h \
  ../Core/Inc/../Lib/Periferije/Tajmer/Tajmer.h \
  ../Core/Inc/../Lib/Periferije/UART/UART.h \
- ../Core/Inc/../Lib/Moduli/AX12a/AX12a.h
+ ../Core/Inc/../Lib/Moduli/AX12a/AX12a.h \
+ ../Core/Inc/../Lib/Moduli/Odometrija/Odometrija.h \
+ ../Core/Inc/../Lib/Moduli/Senzor/Senzor.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -56,3 +58,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/../Lib/Periferije/Tajmer/Tajmer.h:
 ../Core/Inc/../Lib/Periferije/UART/UART.h:
 ../Core/Inc/../Lib/Moduli/AX12a/AX12a.h:
+../Core/Inc/../Lib/Moduli/Odometrija/Odometrija.h:
+../Core/Inc/../Lib/Moduli/Senzor/Senzor.h:
