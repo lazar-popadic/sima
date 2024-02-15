@@ -22,6 +22,6 @@ void
 ax_speed_move (uint8_t id, bool Status);
 
 void
-xl_ping (uint8_t id, uint8_t color);
+xl_angle_move (uint8_t id, uint16_t angle);
 
 #endif /* LIB_MODULI_AX12A_AX12A_H_ */

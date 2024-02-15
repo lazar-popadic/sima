@@ -81,22 +81,20 @@ ax_speed_move (uint8_t id, bool Status)
 }
 
 void
-xl_ping (uint8_t id, uint8_t color)
+xl_angle_move (uint8_t id, uint16_t angle)
 {
 
-	  uint8_t xl_move_no_crc[] =
-	    { 0xff, 0xff, 0xfd, 0x00, id, 0x06, 0x00, 0x03, 0x19, 0x00, color, 0x00, 0x00};
+	  uint8_t xl_move[14] =
+	    { 0xff, 0xff, 0xfd, 0x00, id, 0x07, 0x00, 0x03, 0x1e, 0x00,
+	    		DXL_LOBYTE(angle), DXL_HIBYTE(angle), 0x00, 0x00};
 
 	  uint16_t crc16;
-	  uint8_t crc_l, crc_h;
-	  crc16 = update_crc (0, xl_move_no_crc, 13);
-	  crc_l = DXL_LOBYTE(crc16);
-	  crc_h = DXL_HIBYTE(crc16);
 
-	  uint8_t xl_move[] =
-	    { 0xff, 0xff, 0xfd, 0x00, id, 0x06, 0x00, 0x03, 0x19, 0x00, color, 0x00, 0x00, crc_l, crc_h};
+	  crc16 = update_crc (0, xl_move, 12);
+	  xl_move[12] = DXL_LOBYTE(crc16); //crc_l
+	  xl_move[13] = DXL_HIBYTE(crc16); //crc_h
 
-	  for (uint8_t i = 0; i < 15; i++)
+	  for (uint8_t i = 0; i < 14; i++)
 	    {
 	      UART_send_byte (xl_move[i]);
 	    }

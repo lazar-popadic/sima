@@ -1,4 +1,4 @@
 ../Core/Lib/Moduli/AX12a/AX12a.c:30:1:ax_angle_move	40	static
 ../Core/Lib/Moduli/AX12a/AX12a.c:52:1:ax_speed_move	48	static
-../Core/Lib/Moduli/AX12a/AX12a.c:84:1:xl_ping	56	static
-../Core/Lib/Moduli/AX12a/AX12a.c:105:1:update_crc	536	static
+../Core/Lib/Moduli/AX12a/AX12a.c:84:1:xl_angle_move	40	static
+../Core/Lib/Moduli/AX12a/AX12a.c:104:1:update_crc	536	static

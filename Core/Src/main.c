@@ -126,8 +126,14 @@ int main(void)
 //	  TajmerDelay(100000);
 
      TajmerDelay(500);
-     xl_ping(2, 3);
-     TajmerDelay(5000);
+     xl_angle_move(3, 200);
+     TajmerDelay(500);
+     xl_angle_move(2, 700);
+     TajmerDelay(500);
+     xl_angle_move(3, 700);
+     TajmerDelay(500);
+     xl_angle_move(2, 200);
+     TajmerDelay(500);
 
     /* USER CODE BEGIN 3 */
   }

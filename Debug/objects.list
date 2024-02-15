@@ -1,5 +1,6 @@
 "./Core/Lib/Moduli/AX12a/AX12a.o"
 "./Core/Lib/Moduli/Odometrija/Odometrija.o"
+"./Core/Lib/Moduli/Senzor/Senzor.o"
 "./Core/Lib/Periferije/IO/IO.o"
 "./Core/Lib/Periferije/Tajmer/Tajmer.o"
 "./Core/Lib/Periferije/UART/UART.o"
