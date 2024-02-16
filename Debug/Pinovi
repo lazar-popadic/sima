@@ -1,7 +1,15 @@
 Pinovi:
 
+    Port A:
+    
+    7 - cinc
+
 	Port B:
 
 	3-Ledovka
 	6-Uart1 RX
 	7--Uart1 TX
+	
+	Port C:
+	
+	14 - senzor

@@ -16,4 +16,7 @@ io ();
 void
 io_led (bool status);
 
+bool
+IO_cinc();
+
 #endif /* LIB_PERIFERIJE_IO_IO_H_ */

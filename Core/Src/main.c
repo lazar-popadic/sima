@@ -116,18 +116,20 @@ int main(void)
     /* USER CODE END WHILE */
 //	  ax_angle_move(6, LEVO, 200);
 //	  TajmerDelay(200);
-//	  ax_speed_move(5, true);
+//	  ax_wheel_mode(5);
 //	  TajmerDelay(500);
-//	  ax_angle_move(5, 200, 2023);
-//	  TajmerDelay(25);
+//	  ax_angle_move(5, 0, 2023);
+//	  TajmerDelay(10);
 //	  ax_angle_move(6, PRAVO, 200);
-//	  TajmerDelay(2000);
+//	  TajmerDelay(3000);
 //	  TajmerDelay(3000);
 //	  ax_angle_move(5, 0, 0);
 //	  TajmerDelay(100000);
 
-
-
+     xl_angle_move(2, 0);
+     TajmerDelay(1000);
+     xl_angle_move(2, 1023);
+     TajmerDelay(1000);
 
     /* USER CODE BEGIN 3 */
   }

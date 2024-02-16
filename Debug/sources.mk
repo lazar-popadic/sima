@@ -25,6 +25,7 @@ SUBDIRS := \
 Core/Lib/Moduli/AX12a \
 Core/Lib/Moduli/Odometrija \
 Core/Lib/Moduli/Senzor \
+Core/Lib/Moduli/Strategije \
 Core/Lib/Periferije/IO \
 Core/Lib/Periferije/Tajmer \
 Core/Lib/Periferije/UART \

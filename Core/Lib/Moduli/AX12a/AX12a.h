@@ -19,7 +19,10 @@ void
 ax_angle_move (uint8_t id, uint16_t angle, uint16_t speed);
 
 void
-ax_speed_move (uint8_t id, bool Status);
+ax_wheel_mode(uint8_t id);
+
+void
+ax_joint_mode(uint8_t id);
 
 void
 xl_angle_move (uint8_t id, uint16_t angle);

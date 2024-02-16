@@ -1,4 +1,5 @@
 ../Core/Lib/Moduli/AX12a/AX12a.c:30:1:ax_angle_move	2
-../Core/Lib/Moduli/AX12a/AX12a.c:52:1:ax_speed_move	4
-../Core/Lib/Moduli/AX12a/AX12a.c:84:1:xl_angle_move	2
-../Core/Lib/Moduli/AX12a/AX12a.c:104:1:update_crc	2
+../Core/Lib/Moduli/AX12a/AX12a.c:52:1:ax_wheel_mode	2
+../Core/Lib/Moduli/AX12a/AX12a.c:69:1:ax_joint_mode	2
+../Core/Lib/Moduli/AX12a/AX12a.c:87:1:xl_angle_move	2
+../Core/Lib/Moduli/AX12a/AX12a.c:107:1:update_crc	2

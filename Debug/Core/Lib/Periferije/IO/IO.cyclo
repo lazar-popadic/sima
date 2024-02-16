@@ -1,3 +1,5 @@
-../Core/Lib/Periferije/IO/IO.c:14:1:io	1
-../Core/Lib/Periferije/IO/IO.c:20:1:portB_init	1
-../Core/Lib/Periferije/IO/IO.c:32:1:io_led	2
+../Core/Lib/Periferije/IO/IO.c:19:1:io	1
+../Core/Lib/Periferije/IO/IO.c:26:1:portB_init	1
+../Core/Lib/Periferije/IO/IO.c:38:1:portA_init	1
+../Core/Lib/Periferije/IO/IO.c:49:1:io_led	2
+../Core/Lib/Periferije/IO/IO.c:61:1:IO_cinc	2

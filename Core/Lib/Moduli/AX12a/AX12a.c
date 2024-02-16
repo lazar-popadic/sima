@@ -49,36 +49,39 @@ ax_angle_move (uint8_t id, uint16_t angle, uint16_t speed)
 }
 
 void
-ax_speed_move (uint8_t id, bool Status)
+ax_wheel_mode(uint8_t id)
 {
 	// 0-1023 CCW
 	// 1024-2047 CW
 
-	if(Status)
-	{
-		uint16_t checksum_local = id + 5 + 3 + 8;
-	    uint8_t checksum = (uint8_t) (~checksum_local);
-	    uint8_t ax_move[] =
-			    { 0xff, 0xff, id, 0x05, 0x03, 0x08, 0x00, 0x00, checksum };
+	uint16_t checksum_local = id + 5 + 3 + 8;
+	uint8_t checksum = (uint8_t) (~checksum_local);
+	uint8_t ax_move[] =
+			{ 0xff, 0xff, id, 0x05, 0x03, 0x08, 0x00, 0x00, checksum };
 
-		for (uint8_t i = 0; i < 9; i++)
-		    {
-		      UART_send_byte(ax_move[i]);
-		    }
-	}
-	else
-	{
-		uint16_t checksum_local = id + 5 + 3 + 8 + 0xff + 3;
-	    uint8_t checksum = (uint8_t) (~checksum_local);
-	    uint8_t ax_move[] =
-					    { 0xff, 0xff, id, 0x05, 0x03, 0x08, 0xff, 0x03, checksum };
-
-		for (uint8_t i = 0; i < 9; i++)
-			{
-			  UART_send_byte(ax_move[i]);
-			}
-	}
+	for (uint8_t i = 0; i < 9; i++)
+			    {
+			      UART_send_byte(ax_move[i]);
+			    }
 }
+
+void
+ax_joint_mode(uint8_t id)
+{
+	//koristiti ovo samo ako je pre bio u endless turn-u
+	//i sad treba da se vrati u ugaoni mod
+
+	uint16_t checksum_local = id + 5 + 3 + 8 + 0xff + 3;
+    uint8_t checksum = (uint8_t) (~checksum_local);
+	uint8_t ax_move[] =
+			{ 0xff, 0xff, id, 0x05, 0x03, 0x08, 0xff, 0x03, checksum };
+
+	for (uint8_t i = 0; i < 9; i++)
+				{
+				  UART_send_byte(ax_move[i]);
+				}
+}
+
 
 void
 xl_angle_move (uint8_t id, uint16_t angle)

@@ -15,6 +15,7 @@ RM := rm -rf
 -include Core/Lib/Periferije/UART/subdir.mk
 -include Core/Lib/Periferije/Tajmer/subdir.mk
 -include Core/Lib/Periferije/IO/subdir.mk
+-include Core/Lib/Moduli/Strategije/subdir.mk
 -include Core/Lib/Moduli/Senzor/subdir.mk
 -include Core/Lib/Moduli/Odometrija/subdir.mk
 -include Core/Lib/Moduli/AX12a/subdir.mk

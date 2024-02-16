@@ -6,6 +6,7 @@
  */
 
 #include "../Lib/Moduli/Odometrija/Odometrija.h"
+#include "../Lib/Moduli/AX12a/AX12a.h"
 
 float x_r=0;
 float y_r=0;

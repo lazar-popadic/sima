@@ -26,7 +26,7 @@ sensor_IO_init()
 {
 	RCC->AHB2ENR |= (0b1 << 2); //takt za gpioC
 
-	GPIOC-> MODER &= ~(0b11 << 2* infra_1);
+	GPIOC-> MODER &= ~(0b11 << 2* infra_1);  //PC14
 }
 
 bool

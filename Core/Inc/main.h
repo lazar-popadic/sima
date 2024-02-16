@@ -38,6 +38,7 @@ extern "C" {
 #include "../Lib/Moduli/AX12a/AX12a.h"
 #include "../Lib/Moduli/Odometrija/Odometrija.h"
 #include "../Lib/Moduli/Senzor/Senzor.h"
+#include "../Lib/Moduli/Strategije/Strategije.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

@@ -12,6 +12,9 @@
 #include <stdbool.h>
 #include "stm32l4xx.h"
 
+#define SENSORS_OFF 0
+#define SENSOR_JJ 1
+
 void
 tajmer_init();
 void
