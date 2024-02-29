@@ -13,6 +13,7 @@
 
 #define PRAVO 570 //165.3 AX -> 0 robot
 #define LEVO 711  //206.19 AX ->
+#define LEVOPP 641
 #define DESNO 439 //127.31 AX ->
 
 void

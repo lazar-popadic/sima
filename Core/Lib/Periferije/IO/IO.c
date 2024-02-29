@@ -64,7 +64,7 @@ IO_cinc()
 		counter++;
 	else
 		counter=0;
-	if(counter>64000)
+	if(counter)
 		return true;
 	return false;
 }

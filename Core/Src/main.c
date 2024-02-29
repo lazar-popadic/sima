@@ -42,6 +42,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+  int debug=0;
 
 /* USER CODE END PV */
 
@@ -114,22 +115,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-//	  ax_angle_move(6, LEVO, 200);
-//	  TajmerDelay(200);
-//	  ax_wheel_mode(5);
-//	  TajmerDelay(500);
-//	  ax_angle_move(5, 0, 2023);
-//	  TajmerDelay(10);
-//	  ax_angle_move(6, PRAVO, 200);
-//	  TajmerDelay(3000);
-//	  TajmerDelay(3000);
-//	  ax_angle_move(5, 0, 0);
-//	  TajmerDelay(100000);
+//	  debug=GPIOA->IDR & (0b1 << 7);
+	  tactic_yellow_2();
 
-     xl_angle_move(2, 0);
-     TajmerDelay(1000);
-     xl_angle_move(2, 1023);
-     TajmerDelay(1000);
+
 
     /* USER CODE BEGIN 3 */
   }
