@@ -11,15 +11,24 @@ uint8_t const CINC=7;
 volatile uint8_t counter = 0;
 
 static void
+portC_init();
+static void
 portB_init();
 static void
 portA_init();
 
 void
 io ()
+ {
+	portC_init();
+	portB_init();
+	portA_init();
+}
+
+static void
+portC_init()
 {
-  portB_init ();
-  portA_init();
+	RCC->AHB2ENR |= (0b1 << 2);
 }
 
 static void

@@ -115,8 +115,9 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-//	  debug=GPIOA->IDR & (0b1 << 7);
-	  tactic_yellow_2();
+
+	  tactic_yellow_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
+
 
 
 

@@ -13,7 +13,7 @@ static void
 sensor_IO_init();
 
 //portC
-uint8_t infra_1 = 14;
+uint8_t infra_1 = 1;
 
 void
 sensor_Init()
@@ -24,15 +24,15 @@ sensor_IO_init();
 void
 sensor_IO_init()
 {
-	RCC->AHB2ENR |= (0b1 << 2); //takt za gpioC
+	RCC->AHB2ENR |= (0b1 << 1); //takt za gpioB
 
-	GPIOC-> MODER &= ~(0b11 << 2* infra_1);  //PC14
+	GPIOB-> MODER &= ~(0b11 << 2* infra_1);  //PB1
 }
 
 bool
 sensor_JedanJedini()
 {
-	if(GPIOC->IDR & (0b1<<infra_1))
+	if(GPIOB->IDR & (0b1<<infra_1))
 		return true;
 	return false;
 }

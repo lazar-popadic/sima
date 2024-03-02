@@ -10,6 +10,6 @@
 
 #include <stdint.h>
 
-void tactic_yellow_2();
+void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
 #endif /* LIB_MODULI_STRATEGIJE_STRATEGIJE_H_ */

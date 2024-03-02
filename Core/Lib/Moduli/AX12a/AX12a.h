@@ -15,6 +15,10 @@
 #define LEVO 711  //206.19 AX ->
 #define LEVOPP 641
 #define DESNO 439 //127.31 AX ->
+#define DESNOPP 505
+
+#define ID_SIMA2_POGONSKI 5
+#define ID_SIMA2_ZAKRETNI 6
 
 void
 ax_angle_move (uint8_t id, uint16_t angle, uint16_t speed);

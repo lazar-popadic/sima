@@ -1,1 +1,2 @@
-../Core/Lib/Moduli/Strategije/Strategije.c:15:6:tactic_yellow_2	8	static
+../Core/Lib/Moduli/Strategije/Strategije.c:19:6:tactic_yellow_2	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:234:1:interrupted_func	16	static
