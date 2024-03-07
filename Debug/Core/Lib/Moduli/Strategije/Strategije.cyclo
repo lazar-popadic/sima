@@ -1,2 +1,7 @@
-../Core/Lib/Moduli/Strategije/Strategije.c:19:6:tactic_yellow_2	27
-../Core/Lib/Moduli/Strategije/Strategije.c:234:1:interrupted_func	1
+../Core/Lib/Moduli/Strategije/Strategije.c:25:6:tactic_yellow_2	27
+../Core/Lib/Moduli/Strategije/Strategije.c:237:6:tactic_yellow_3	27
+../Core/Lib/Moduli/Strategije/Strategije.c:453:6:tactic_blue_2	27
+../Core/Lib/Moduli/Strategije/Strategije.c:666:6:tactic_blue_3	27
+../Core/Lib/Moduli/Strategije/Strategije.c:883:1:interrupted_func_stop	1
+../Core/Lib/Moduli/Strategije/Strategije.c:891:1:interrupted_func_right_sideway	1
+../Core/Lib/Moduli/Strategije/Strategije.c:939:1:interrupted_func_left_sideway	1

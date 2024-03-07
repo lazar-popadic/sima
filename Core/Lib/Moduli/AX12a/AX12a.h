@@ -14,8 +14,10 @@
 #define PRAVO 570 //165.3 AX -> 0 robot
 #define LEVO 711  //206.19 AX ->
 #define LEVOPP 641
+#define LEVOPP1 605
 #define DESNO 439 //127.31 AX ->
 #define DESNOPP 505
+#define DESNOPP1 537
 
 #define ID_SIMA2_POGONSKI 5
 #define ID_SIMA2_ZAKRETNI 6
