@@ -10,9 +10,11 @@
 
 #include <stdint.h>
 
+void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
+void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 

@@ -116,7 +116,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-	  tactic_blue_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
+	  tactic_yellow_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
 
 
 
