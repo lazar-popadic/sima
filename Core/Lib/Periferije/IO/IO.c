@@ -6,8 +6,10 @@
  */
 
 #include "../../Periferije/IO/IO.h"
+#include "main.h"
 
 uint8_t const CINC=7;
+uint8_t const PREKIDAC_TAKTIKE_2=9;
 volatile uint8_t counter = 0;
 
 static void
@@ -52,6 +54,11 @@ portA_init()
 	GPIOA->OSPEEDR &= ~(0b11 << 2 * CINC); //low speed
 	GPIOA->PUPDR &= ~(0b11 << 2 *CINC);
 	GPIOA->PUPDR |= (0b10 << 2*CINC);
+
+	GPIOA->MODER &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2);
+    GPIOA->OSPEEDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2); //low speed
+    GPIOA->PUPDR &= ~(0b11 << 2 *PREKIDAC_TAKTIKE_2);
+	GPIOA->PUPDR |= (0b10 << 2*PREKIDAC_TAKTIKE_2);
 }
 
 void
@@ -76,4 +83,13 @@ IO_cinc()
 	if(counter)
 		return true;
 	return false;
+}
+
+void
+Taktika_SIMA_DRUGI_2()
+{
+	if(!(GPIOA->IDR & (0b1 << PREKIDAC_TAKTIKE_2)))
+			tactic_blue_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
+		else
+			tactic_yellow_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
 }

@@ -1,6 +1,7 @@
-../Core/Lib/Periferije/IO/IO.c:21:1:io	8	static
-../Core/Lib/Periferije/IO/IO.c:29:1:portC_init	4	static
-../Core/Lib/Periferije/IO/IO.c:35:1:portB_init	4	static
-../Core/Lib/Periferije/IO/IO.c:47:1:portA_init	4	static
-../Core/Lib/Periferije/IO/IO.c:58:1:io_led	16	static
-../Core/Lib/Periferije/IO/IO.c:70:1:IO_cinc	4	static
+../Core/Lib/Periferije/IO/IO.c:23:1:io	8	static
+../Core/Lib/Periferije/IO/IO.c:31:1:portC_init	4	static
+../Core/Lib/Periferije/IO/IO.c:37:1:portB_init	4	static
+../Core/Lib/Periferije/IO/IO.c:49:1:portA_init	4	static
+../Core/Lib/Periferije/IO/IO.c:65:1:io_led	16	static
+../Core/Lib/Periferije/IO/IO.c:77:1:IO_cinc	4	static
+../Core/Lib/Periferije/IO/IO.c:89:1:Taktika_SIMA_DRUGI_2	8	static

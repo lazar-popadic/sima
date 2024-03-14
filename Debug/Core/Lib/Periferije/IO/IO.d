@@ -23,7 +23,14 @@ Core/Lib/Periferije/IO/IO.o: ../Core/Lib/Periferije/IO/IO.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h \
+ ../Core/Inc/main.h ../Core/Inc/../Lib/Periferije/IO/IO.h \
+ ../Core/Inc/../Lib/Periferije/Tajmer/Tajmer.h \
+ ../Core/Inc/../Lib/Periferije/UART/UART.h \
+ ../Core/Inc/../Lib/Moduli/AX12a/AX12a.h \
+ ../Core/Inc/../Lib/Moduli/Odometrija/Odometrija.h \
+ ../Core/Inc/../Lib/Moduli/Senzor/Senzor.h \
+ ../Core/Inc/../Lib/Moduli/Strategije/Strategije.h
 ../Core/Lib/Periferije/IO/../../Periferije/IO/IO.h:
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l432xx.h:
@@ -49,3 +56,11 @@ Core/Lib/Periferije/IO/IO.o: ../Core/Lib/Periferije/IO/IO.c \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_pwr_ex.h:
+../Core/Inc/main.h:
+../Core/Inc/../Lib/Periferije/IO/IO.h:
+../Core/Inc/../Lib/Periferije/Tajmer/Tajmer.h:
+../Core/Inc/../Lib/Periferije/UART/UART.h:
+../Core/Inc/../Lib/Moduli/AX12a/AX12a.h:
+../Core/Inc/../Lib/Moduli/Odometrija/Odometrija.h:
+../Core/Inc/../Lib/Moduli/Senzor/Senzor.h:
+../Core/Inc/../Lib/Moduli/Strategije/Strategije.h:
