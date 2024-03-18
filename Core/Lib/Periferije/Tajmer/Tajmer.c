@@ -50,7 +50,19 @@ tim2_init()
 	uint8_t const TIM2_PREKID = 28;
 	NVIC->ISER[0] |= (0b1 << TIM2_PREKID);
 
-	TIM2->CR1 |= (0b1 << 0);
+	//TIM2->CR1 |= (0b1 << 0);
+}
+
+void
+timer_start_sys_time ()
+{
+  TIM2->CR1 |= (0b1 << 0);	//tek ga ovo ukljucuje
+}
+
+void
+timer_stop_sys_time ()
+{
+  TIM2->CR1 &= ~(0b1 << 0);
 }
 
 bool
@@ -87,6 +99,14 @@ TIM2_IRQHandler ()
       TIM2->SR &= ~(0b1 << 0);	// da bi sledeci put mogli da detektujemo prekid
 
       sys_time_ms++;
+
+      if(sys_time_ms >= 9500)
+      {
+    	  ax_angle_move(ID_SIMA2_POGONSKI, 0, 0);
+    	  ax_angle_move(ID_SIMA3_POGONSKI, 0, 0);
+    	  ax_angle_move(ID_SIMA4_POGONSKI, 0, 0);
+    	  while(1);
+      }
     }
 
   switch (sensors_case_timer) {

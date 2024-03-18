@@ -54,8 +54,8 @@ UART1_init()
      USART1->CR1 &= ~(0b1 << 28); //8 bita
      USART1->CR2 &= ~(0b11 << 12); //1 stop bit
 
-     USART1->BRR = 0; //baud 9600
-     USART1->BRR |= ((546 << 4) | (14 << 0));
+     USART1->BRR = 0; //baud 9600->546.14
+     USART1->BRR |= ((546 << 4) | (14 << 0)); //115200->45.57
 
      USART1->CR1 |= (0b11 << 2); //tx & rx pin enable
 

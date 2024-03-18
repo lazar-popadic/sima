@@ -14,173 +14,177 @@ extern volatile bool interrupted;
 extern volatile uint8_t sensors_case_timer;
 
 static void
-interrupted_func_stop (uint8_t AX_Pogonski);
+interrupted_func_stop(uint8_t AX_Pogonski);
 
 static void
 interrupted_func_right_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
 static void
-interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
+interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski,
+		uint8_t AX_Zakretni);
 
 static void
-interrupted_func_left_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
+interrupted_func_left_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
-void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+static void
+interrupted_func_left_diagonal_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
+
+void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
-			case 0:
-				if (IO_cinc()) {
-					tactic_state++;
-				}
-				break;
-
-			case 1:
-				TajmerDelay(200);
-				ax_angle_move(AX_Zakretni, PRAVO, 200);
-				ax_angle_move(AX_Zakretni, PRAVO, 200);
-				TajmerDelay(500);
-				ax_angle_move(AX_Zakretni, LEVO, 200);
-				ax_angle_move(AX_Zakretni, LEVO, 200);
-				ax_angle_move(AX_Zakretni, LEVO, 200);
-				ax_angle_move(AX_Zakretni, LEVO, 200);
-				TajmerDelay(200);
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(200);
-				ax_angle_move(AX_Pogonski, 0, 767);
-				TajmerDelay(360);
-				ax_angle_move(AX_Zakretni, PRAVO, 200);
-				ax_angle_move(AX_Zakretni, PRAVO, 200);
-
-				tactic_state++;
-				break;
-
-			case 2:
-				sensors_case_timer = SENSOR_JJ;
-
-				if(interrupted)
-				{
-
-					interrupted_func_stop(AX_Pogonski);
-					tactic_state++;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-
-			break;
-		case 3:
-			sensors_case_timer = SENSOR_JJ;
-
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
-
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
-		case 4:
-			sensors_case_timer = SENSOR_JJ;
-
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
-
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
-		case 5:
-			sensors_case_timer = SENSOR_JJ;
-
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
-
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
-		case 6:
-			sensors_case_timer = SENSOR_JJ;
-
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
-
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
-		case 7:
-				sensors_case_timer = SENSOR_JJ;
-
-				if (interrupted) {
-					interrupted_func_stop(AX_Pogonski);
-					tactic_state++;
-
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
-
-					TajmerDelay(150);
-					tactic_state++;
-				}
-				break;
-		case 8:
-				sensors_case_timer = SENSOR_JJ;
-
-				if (interrupted) {
-					interrupted_func_stop(AX_Pogonski);
-					tactic_state++;
-
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
-
-					TajmerDelay(150);
-					tactic_state++;
-				}
-				break;
-
-		case 9:
-			ax_angle_move(AX_Pogonski, 0, 0);
-			break;
-		default:
-			break;
+	case 0:
+		if (IO_cinc()) {
+			timer_start_sys_time();
+			tactic_state++;
 		}
+		break;
+
+	case 1:
+		TajmerDelay(200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		TajmerDelay(1500);
+		ax_angle_move(AX_Zakretni, LEVO, 200);
+		ax_angle_move(AX_Zakretni, LEVO, 200);
+		ax_angle_move(AX_Zakretni, LEVO, 200);
+		ax_angle_move(AX_Zakretni, LEVO, 200);
+		TajmerDelay(200);
+		ax_wheel_mode(AX_Pogonski);
+		TajmerDelay(200);
+		ax_angle_move(AX_Pogonski, 0, 767);
+		TajmerDelay(360);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+
+		tactic_state++;
+		break;
+
+	case 2:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+
+		break;
+	case 3:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+	case 4:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+	case 5:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+	case 6:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+	case 7:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+	case 8:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
+
+	case 9:
+		ax_angle_move(AX_Pogonski, 0, 0);
+		break;
+	default:
+		break;
+	}
 }
 
 void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
 	case 0:
 		if (IO_cinc()) {
+			timer_start_sys_time();
 			tactic_state++;
 		}
 		break;
@@ -191,7 +195,7 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		TajmerDelay(300);
 		ax_angle_move(AX_Zakretni, LEVOPP1, 200);
-		ax_angle_move(AX_Zakretni, LEVOPP1, 300);
+		ax_angle_move(AX_Zakretni, LEVOPP1, 200);
 		ax_angle_move(AX_Zakretni, LEVOPP1, 200);
 		ax_angle_move(AX_Zakretni, LEVOPP1, 200);
 		TajmerDelay(200);
@@ -208,11 +212,10 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 2:
 		sensors_case_timer = SENSOR_JJ;
 
-		if(interrupted)
-		{
+		if (interrupted) {
 
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			tactic_state += 6;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -226,10 +229,9 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 3:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			tactic_state += 6;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -243,10 +245,9 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 4:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			tactic_state += 6;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -260,10 +261,9 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 5:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=5;
+			tactic_state += 5;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -279,7 +279,7 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=4;
+			tactic_state += 4;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -295,7 +295,7 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=3;
+			tactic_state += 3;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -306,80 +306,78 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 			tactic_state++;
 		}
 	case 8:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
+		if (interrupted) {
+			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 9:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		if (interrupted) {
+			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 10:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		if (interrupted) {
+			interrupted_func_right_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 11:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				tactic_state = 11;
-				interrupted_func_stop(AX_Pogonski);
+		if (interrupted) {
+			tactic_state = 11;
+			interrupted_func_stop(AX_Pogonski);
 
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 12:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				tactic_state = 12;
-				interrupted_func_stop(AX_Pogonski);
+		if (interrupted) {
+			tactic_state = 12;
+			interrupted_func_stop(AX_Pogonski);
 
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 		break;
 	case 13:
 		ax_angle_move(AX_Pogonski, 0, 0);
@@ -389,11 +387,11 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	}
 }
 
-void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
 	case 0:
 		if (IO_cinc()) {
+			timer_start_sys_time();
 			tactic_state++;
 		}
 		break;
@@ -414,11 +412,10 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
 	case 2:
 		sensors_case_timer = SENSOR_JJ;
 
-		if(interrupted)
-		{
+		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state=2;
+			tactic_state = 2;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -428,44 +425,41 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
 			tactic_state++;
 		}
 	case 3:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if(interrupted)
-			{
+		if (interrupted) {
 
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state=3;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 3;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 4:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if(interrupted)
-			{
+		if (interrupted) {
 
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state=4;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 4;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 5:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if(interrupted)
-			{
+		if (interrupted) {
 
-				interrupted_func_stop(AX_Pogonski);
+			interrupted_func_stop(AX_Pogonski);
 			tactic_state = 5;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -484,167 +478,159 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
 
 			TajmerDelay(150);
 			tactic_state++;
-			}
+		}
 	case 6:
-				sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-				if(interrupted)
-				{
+		if (interrupted) {
 
-					interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-					tactic_state=6;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 6;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-					TajmerDelay(150);
-					tactic_state++;
-				}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 7:
-				sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-				if(interrupted)
-				{
+		if (interrupted) {
 
-					interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-					tactic_state=7;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 7;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-					TajmerDelay(150);
-					tactic_state++;
-				}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 8:
-				sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-				if(interrupted)
-				{
+		if (interrupted) {
 
-					interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-					tactic_state=8;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 8;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-					TajmerDelay(150);
-					tactic_state++;
-				}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 9:
-				sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-				if(interrupted)
-				{
+		if (interrupted) {
 
-					interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-					tactic_state=9;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 9;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-					TajmerDelay(150);
-					tactic_state++;
-				}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 10:
-				sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-				if(interrupted)
-				{
+		if (interrupted) {
 
-					interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-					tactic_state=10;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 10;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-					TajmerDelay(150);
-					tactic_state++;
-				}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 11:
-					sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-					if(interrupted)
-					{
+		if (interrupted) {
 
-						interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state=11;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 11;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-						TajmerDelay(150);
-						tactic_state++;
-					}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 12:
-					sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-					if(interrupted)
-					{
+		if (interrupted) {
 
-						interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state=12;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
+			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state = 12;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-						TajmerDelay(150);
-						tactic_state++;
-					}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 13:
-			ax_angle_move(AX_Pogonski, 0, 0);
-			break;
-		default:
-			break;
+		ax_angle_move(AX_Pogonski, 0, 0);
+		break;
+	default:
+		break;
 	}
 }
 
-void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
-		case 0:
-			if (IO_cinc()) {
-				tactic_state++;
-			}
-			break;
-
-		case 1:
-			TajmerDelay(200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-			TajmerDelay(500);
-			ax_angle_move(AX_Zakretni, DESNO, 200);
-			ax_angle_move(AX_Zakretni, DESNO, 200);
-			ax_angle_move(AX_Zakretni, DESNO, 200);
-			ax_angle_move(AX_Zakretni, DESNO, 200);
-			TajmerDelay(200);
-			ax_wheel_mode(AX_Pogonski);
-			TajmerDelay(200);
-			ax_angle_move(AX_Pogonski, 0, 767);
-			TajmerDelay(200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-
+	case 0:
+		if (IO_cinc()) {
+			timer_start_sys_time();
 			tactic_state++;
-			break;
+		}
+		break;
 
-		case 2:
-			sensors_case_timer = SENSOR_JJ;
+	case 1:
+		TajmerDelay(200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		TajmerDelay(1500);
+		ax_angle_move(AX_Zakretni, DESNO, 200);
+		ax_angle_move(AX_Zakretni, DESNO, 200);
+		ax_angle_move(AX_Zakretni, DESNO, 200);
+		ax_angle_move(AX_Zakretni, DESNO, 200);
+		TajmerDelay(200);
+		ax_wheel_mode(AX_Pogonski);
+		TajmerDelay(200);
+		ax_angle_move(AX_Pogonski, 0, 767);
+		TajmerDelay(200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
 
-			if(interrupted)
-			{
+		tactic_state++;
+		break;
 
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
+	case 2:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
 			ax_angle_move(AX_Pogonski, 0, 1023);
 
 			TajmerDelay(150);
@@ -717,37 +703,37 @@ void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
 		}
 		break;
 	case 7:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
 	case 8:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state++;
+		if (interrupted) {
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state++;
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
-			break;
+			TajmerDelay(150);
+			tactic_state++;
+		}
+		break;
 
 	case 9:
 		ax_angle_move(AX_Pogonski, 0, 0);
@@ -761,6 +747,7 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
 	case 0:
 		if (IO_cinc()) {
+			timer_start_sys_time();
 			tactic_state++;
 		}
 		break;
@@ -788,11 +775,10 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 2:
 		sensors_case_timer = SENSOR_JJ;
 
-		if(interrupted)
-		{
+		if (interrupted) {
 
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 6;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -806,10 +792,9 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 3:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 6;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -823,10 +808,9 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 4:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=6;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 6;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -840,16 +824,14 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	case 5:
 		sensors_case_timer = SENSOR_JJ;
 
-
 		if (interrupted) {
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=5;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 5;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
 			ax_angle_move(AX_Pogonski, 0, 1023);
-
 
 			TajmerDelay(150);
 			tactic_state++;
@@ -859,8 +841,8 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		sensors_case_timer = SENSOR_JJ;
 
 		if (interrupted) {
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=4;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 4;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -875,8 +857,8 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		sensors_case_timer = SENSOR_JJ;
 
 		if (interrupted) {
-			interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state+=3;
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 3;
 
 		} else {
 			ax_wheel_mode(AX_Pogonski);
@@ -887,80 +869,78 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 			tactic_state++;
 		}
 	case 8:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
+		if (interrupted) {
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 9:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
+		if (interrupted) {
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 10:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				interrupted_func_left_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state+=2;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
+		if (interrupted) {
+			interrupted_func_left_diagonal_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 11:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				tactic_state = 11;
-				interrupted_func_stop(AX_Pogonski);
+		if (interrupted) {
+			tactic_state = 11;
+			interrupted_func_stop(AX_Pogonski);
 
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 	case 12:
-			sensors_case_timer = SENSOR_JJ;
+		sensors_case_timer = SENSOR_JJ;
 
-			if (interrupted) {
-				tactic_state = 12;
-				interrupted_func_stop(AX_Pogonski);
+		if (interrupted) {
+			tactic_state = 12;
+			interrupted_func_stop(AX_Pogonski);
 
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
 
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
+			TajmerDelay(150);
+			tactic_state++;
+		}
 		break;
 	case 13:
 		ax_angle_move(AX_Pogonski, 0, 0);
@@ -970,233 +950,219 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	}
 }
 
-void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
-		case 0:
-			if (IO_cinc()) {
-				tactic_state++;
-			}
-			break;
-
-		case 1:
-			TajmerDelay(200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-			ax_angle_move(AX_Zakretni, PRAVO, 200);
-			TajmerDelay(200);
-			ax_wheel_mode(AX_Pogonski);
-			TajmerDelay(200);
-			ax_angle_move(AX_Pogonski, 0, 1023);
-			TajmerDelay(200);
-
+	case 0:
+		if (IO_cinc()) {
+			timer_start_sys_time();
 			tactic_state++;
-			break;
-
-		case 2:
-			sensors_case_timer = SENSOR_JJ;
-
-			if(interrupted)
-			{
-
-				interrupted_func_stop(AX_Pogonski);
-				tactic_state=2;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 1023);
-
-				TajmerDelay(150);
-				tactic_state++;
-			}
-		case 3:
-				sensors_case_timer = SENSOR_JJ;
-
-				if(interrupted)
-				{
-
-					interrupted_func_stop(AX_Pogonski);
-					tactic_state=3;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
-
-					TajmerDelay(150);
-					tactic_state++;
-				}
-		case 4:
-				sensors_case_timer = SENSOR_JJ;
-
-				if(interrupted)
-				{
-
-					interrupted_func_stop(AX_Pogonski);
-					tactic_state=4;
-				} else {
-					ax_wheel_mode(AX_Pogonski);
-					TajmerDelay(100);
-					ax_angle_move(AX_Pogonski, 0, 1023);
-
-					TajmerDelay(150);
-					tactic_state++;
-				}
-		case 5:
-				sensors_case_timer = SENSOR_JJ;
-
-				if(interrupted)
-				{
-
-					interrupted_func_stop(AX_Pogonski);
-				tactic_state = 5;
-			} else {
-				ax_wheel_mode(AX_Pogonski);
-				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
-				TajmerDelay(200);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-				TajmerDelay(450);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-				ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-
-				TajmerDelay(150);
-				tactic_state++;
-				}
-		case 6:
-					sensors_case_timer = SENSOR_JJ;
-
-					if(interrupted)
-					{
-
-						interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state+=5;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
-
-						TajmerDelay(150);
-						tactic_state++;
-					}
-		case 7:
-					sensors_case_timer = SENSOR_JJ;
-
-					if(interrupted)
-					{
-
-						interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state+=4;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
-
-						TajmerDelay(150);
-						tactic_state++;
-					}
-		case 8:
-					sensors_case_timer = SENSOR_JJ;
-
-					if(interrupted)
-					{
-
-						interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state+=3;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
-
-						TajmerDelay(150);
-						tactic_state++;
-					}
-		case 9:
-					sensors_case_timer = SENSOR_JJ;
-
-					if(interrupted)
-					{
-
-						interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state+=2;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
-
-						TajmerDelay(150);
-						tactic_state++;
-					}
-		case 10:
-					sensors_case_timer = SENSOR_JJ;
-
-					if(interrupted)
-					{
-
-						interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-						tactic_state++;
-					} else {
-						ax_wheel_mode(AX_Pogonski);
-						TajmerDelay(100);
-						ax_angle_move(AX_Pogonski, 0, 1023);
-
-						TajmerDelay(250);
-						tactic_state++;
-					}
-		case 11:
-						sensors_case_timer = SENSOR_JJ;
-
-						if(interrupted)
-						{
-
-							interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-							tactic_state++;
-						} else {
-							ax_wheel_mode(AX_Pogonski);
-							TajmerDelay(100);
-							ax_angle_move(AX_Pogonski, 0, 767);
-
-							TajmerDelay(250);
-							tactic_state++;
-						}
-		case 12:
-						sensors_case_timer = SENSOR_JJ;
-
-						if(interrupted)
-						{
-
-							interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-							tactic_state++;
-						} else {
-							ax_wheel_mode(AX_Pogonski);
-							TajmerDelay(100);
-							ax_angle_move(AX_Pogonski, 0, 767);
-
-							TajmerDelay(150);
-							tactic_state++;
-						}
-		case 13:
-				ax_angle_move(AX_Pogonski, 0, 0);
-				break;
-			default:
-				break;
 		}
+		break;
+
+	case 1:
+		TajmerDelay(200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		TajmerDelay(200);
+		ax_wheel_mode(AX_Pogonski);
+		TajmerDelay(200);
+		ax_angle_move(AX_Pogonski, 0, 1023);
+		TajmerDelay(200);
+
+		tactic_state++;
+		break;
+
+	case 2:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 3:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 3;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 4:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 4;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 5:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state = 5;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
+			TajmerDelay(200);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+			TajmerDelay(450);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+			ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 6:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 5;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 7:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 4;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 8:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 3;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 9:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state += 2;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 10:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(250);
+			tactic_state++;
+		}
+	case 11:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
+
+			TajmerDelay(250);
+			tactic_state++;
+		}
+	case 12:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
+			tactic_state++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 767);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 13:
+		ax_angle_move(AX_Pogonski, 0, 0);
+		break;
+	default:
+		break;
+	}
 }
 
-static void
-interrupted_func_stop (uint8_t AX_Pogonski)
-{
+static void interrupted_func_stop(uint8_t AX_Pogonski) {
 	TajmerDelay(200);
-    ax_angle_move(AX_Pogonski, 0, 0);
-    TajmerDelay(500);
+	ax_angle_move(AX_Pogonski, 0, 0);
+	TajmerDelay(500);
 }
 
-static void
-interrupted_func_right_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+static void interrupted_func_right_forward_sideway(uint8_t AX_Pogonski,
+		uint8_t AX_Zakretni) {
 
 	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
 	TajmerDelay(200);
@@ -1232,86 +1198,125 @@ interrupted_func_right_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
 	TajmerDelay(200);
 }
 
-static void
-interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
+static void interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski,
+		uint8_t AX_Zakretni) {
 	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
-		TajmerDelay(200);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		TajmerDelay(300);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(200);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		TajmerDelay(300);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(1250);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		TajmerDelay(300);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(500);
+	TajmerDelay(200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	TajmerDelay(300);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(300);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(1250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(300);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(500);
 }
 
-static void
-interrupted_func_left_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni)
-{
-		ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
-		TajmerDelay(200);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		TajmerDelay(250);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(400);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		TajmerDelay(250);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-		TajmerDelay(250);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(1200);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-		TajmerDelay(250);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-		TajmerDelay(200);
+static void interrupted_func_left_forward_sideway(uint8_t AX_Pogonski,
+		uint8_t AX_Zakretni) {
+	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	TajmerDelay(200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(400);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(1200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(200);
+}
+
+static void interrupted_func_left_diagonal_sideway(uint8_t AX_Pogonski,
+		uint8_t AX_Zakretni) {
+	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	TajmerDelay(200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(400);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	TajmerDelay(250);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	TajmerDelay(1200);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	TajmerDelay(250);
 }

@@ -18,6 +18,10 @@
 void
 tajmer_init();
 void
+timer_start_sys_time();
+void
+timer_stop_sys_time ();
+void
 TajmerDelay(uint32_t ms);
 bool
 timer_delay_nonblocking (uint32_t delay_ms);

@@ -116,7 +116,10 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-	  Taktika_SIMA_DRUGI_2();
+//	  Taktika_SIMA_DRUGI_2();
+//	  Taktika_SIMA_TRECI_3();
+//	  Taktika_SIMA_CETVRTI_4();
+
 
 
 

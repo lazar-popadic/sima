@@ -21,6 +21,10 @@
 
 #define ID_SIMA2_POGONSKI 5
 #define ID_SIMA2_ZAKRETNI 6
+#define ID_SIMA3_POGONSKI 11
+#define ID_SIMA3_ZAKRETNI 8
+#define ID_SIMA4_POGONSKI 13
+#define ID_SIMA4_ZAKRETNI 12
 
 void
 ax_angle_move (uint8_t id, uint16_t angle, uint16_t speed);

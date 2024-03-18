@@ -1,5 +1,7 @@
 ../Core/Lib/Periferije/Tajmer/Tajmer.c:25:1:tajmer_init	1
 ../Core/Lib/Periferije/Tajmer/Tajmer.c:31:1:tim2_init	2
-../Core/Lib/Periferije/Tajmer/Tajmer.c:57:1:timer_delay_nonblocking	3
-../Core/Lib/Periferije/Tajmer/Tajmer.c:72:6:TajmerDelay	2
-../Core/Lib/Periferije/Tajmer/Tajmer.c:81:1:TIM2_IRQHandler	4
+../Core/Lib/Periferije/Tajmer/Tajmer.c:57:1:timer_start_sys_time	1
+../Core/Lib/Periferije/Tajmer/Tajmer.c:63:1:timer_stop_sys_time	1
+../Core/Lib/Periferije/Tajmer/Tajmer.c:69:1:timer_delay_nonblocking	3
+../Core/Lib/Periferije/Tajmer/Tajmer.c:84:6:TajmerDelay	2
+../Core/Lib/Periferije/Tajmer/Tajmer.c:93:1:TIM2_IRQHandler	5

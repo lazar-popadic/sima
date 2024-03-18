@@ -3,6 +3,9 @@ Pinovi:
     Port A:
     
     7 - cinc
+    9 - izbor taktike sime2  // samo jedan izbor taktike po simi
+    10 - izbor taktike sime3
+    11 - izbor taktike sime4
 
 	Port B:
     

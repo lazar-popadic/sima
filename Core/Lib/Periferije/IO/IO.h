@@ -20,5 +20,9 @@ bool
 IO_cinc();
 void
 Taktika_SIMA_DRUGI_2();
+void
+Taktika_SIMA_TRECI_3();
+void
+Taktika_SIMA_CETVRTI_4();
 
 #endif /* LIB_PERIFERIJE_IO_IO_H_ */

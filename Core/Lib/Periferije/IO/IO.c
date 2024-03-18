@@ -10,6 +10,8 @@
 
 uint8_t const CINC=7;
 uint8_t const PREKIDAC_TAKTIKE_2=9;
+uint8_t const PREKIDAC_TAKTIKE_3=10;
+uint8_t const PREKIDAC_TAKTIKE_4=11;
 volatile uint8_t counter = 0;
 
 static void
@@ -56,9 +58,19 @@ portA_init()
 	GPIOA->PUPDR |= (0b10 << 2*CINC);
 
 	GPIOA->MODER &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2);
-    GPIOA->OSPEEDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2); //low speed
-    GPIOA->PUPDR &= ~(0b11 << 2 *PREKIDAC_TAKTIKE_2);
-	GPIOA->PUPDR |= (0b10 << 2*PREKIDAC_TAKTIKE_2);
+	GPIOA->OSPEEDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2); //low speed
+	GPIOA->PUPDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_2);
+	GPIOA->PUPDR |= (0b10 << 2 * PREKIDAC_TAKTIKE_2);
+
+	GPIOA->MODER &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_3);
+	GPIOA->OSPEEDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_3); //low speed
+	GPIOA->PUPDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_3);
+	GPIOA->PUPDR |= (0b10 << 2 * PREKIDAC_TAKTIKE_3);
+
+	GPIOA->MODER &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_4);
+	GPIOA->OSPEEDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_4); //low speed
+	GPIOA->PUPDR &= ~(0b11 << 2 * PREKIDAC_TAKTIKE_4);
+	GPIOA->PUPDR |= (0b10 << 2*PREKIDAC_TAKTIKE_4);
 }
 
 void
@@ -92,4 +104,22 @@ Taktika_SIMA_DRUGI_2()
 			tactic_blue_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
 		else
 			tactic_yellow_2(ID_SIMA2_POGONSKI, ID_SIMA2_ZAKRETNI);
+}
+
+void
+Taktika_SIMA_TRECI_3()
+{
+	if(!(GPIOA->IDR & (0b1 << PREKIDAC_TAKTIKE_3)))
+          tactic_blue_3(ID_SIMA3_POGONSKI, ID_SIMA3_ZAKRETNI);
+		else
+           tactic_yellow_3(ID_SIMA3_POGONSKI, ID_SIMA3_ZAKRETNI);
+}
+
+void
+Taktika_SIMA_CETVRTI_4()
+{
+	if(!(GPIOA->IDR & (0b1 << PREKIDAC_TAKTIKE_4)))
+          tactic_blue_1(ID_SIMA4_POGONSKI, ID_SIMA4_ZAKRETNI);
+		else
+          tactic_yellow_1(ID_SIMA4_POGONSKI, ID_SIMA4_ZAKRETNI);
 }
