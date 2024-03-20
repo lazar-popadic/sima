@@ -20,8 +20,7 @@ static void
 interrupted_func_right_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
 static void
-interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski,
-		uint8_t AX_Zakretni);
+interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
 static void
 interrupted_func_left_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
@@ -39,10 +38,10 @@ void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		break;
 
 	case 1:
-		TajmerDelay(200);
+		TajmerDelay(1200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
-		TajmerDelay(1500);
+		TajmerDelay(500);
 		ax_angle_move(AX_Zakretni, LEVO, 200);
 		ax_angle_move(AX_Zakretni, LEVO, 200);
 		ax_angle_move(AX_Zakretni, LEVO, 200);
@@ -51,7 +50,7 @@ void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		ax_wheel_mode(AX_Pogonski);
 		TajmerDelay(200);
 		ax_angle_move(AX_Pogonski, 0, 767);
-		TajmerDelay(360);
+		TajmerDelay(200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 
@@ -203,6 +202,8 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		TajmerDelay(200);
 		ax_angle_move(AX_Pogonski, 0, 1023);
 		TajmerDelay(250);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 
@@ -602,10 +603,10 @@ void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		break;
 
 	case 1:
-		TajmerDelay(200);
+		TajmerDelay(1200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
-		TajmerDelay(1500);
+		TajmerDelay(500);
 		ax_angle_move(AX_Zakretni, DESNO, 200);
 		ax_angle_move(AX_Zakretni, DESNO, 200);
 		ax_angle_move(AX_Zakretni, DESNO, 200);
@@ -768,6 +769,9 @@ void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		TajmerDelay(250);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+
 
 		tactic_state++;
 		break;
@@ -1158,165 +1162,170 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 static void interrupted_func_stop(uint8_t AX_Pogonski) {
 	TajmerDelay(200);
 	ax_angle_move(AX_Pogonski, 0, 0);
-	TajmerDelay(500);
+	TajmerDelay(300);
 }
 
 static void interrupted_func_right_forward_sideway(uint8_t AX_Pogonski,
 		uint8_t AX_Zakretni) {
 
-	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	ax_angle_move(AX_Pogonski, 0, 767);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(750);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	TajmerDelay(200);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	TajmerDelay(300);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(200);
 }
 
 static void interrupted_func_right_diagonal_sideway(uint8_t AX_Pogonski,
 		uint8_t AX_Zakretni) {
-	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	ax_angle_move(AX_Pogonski, 0, 767);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(1250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(300);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(500);
 }
 
 static void interrupted_func_left_forward_sideway(uint8_t AX_Pogonski,
 		uint8_t AX_Zakretni) {
-	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	ax_angle_move(AX_Pogonski, 0, 767);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(400);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(1200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(200);
 }
 
 static void interrupted_func_left_diagonal_sideway(uint8_t AX_Pogonski,
 		uint8_t AX_Zakretni) {
-	ax_angle_move(ID_SIMA2_POGONSKI, 0, 767);
+	ax_angle_move(AX_Pogonski, 0, 767);
 	TajmerDelay(200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
+	ax_angle_move(AX_Zakretni, LEVO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(400);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
+	ax_angle_move(AX_Zakretni, DESNO, 1000);
 	TajmerDelay(250);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
+	ax_angle_move(AX_Zakretni, PRAVO, 1000);
 	TajmerDelay(1200);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	ax_angle_move(ID_SIMA2_ZAKRETNI, LEVO, 1000);
-	TajmerDelay(250);
 }

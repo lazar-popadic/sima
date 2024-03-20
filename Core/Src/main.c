@@ -118,8 +118,7 @@ int main(void)
 
 //	  Taktika_SIMA_DRUGI_2();
 //	  Taktika_SIMA_TRECI_3();
-//	  Taktika_SIMA_CETVRTI_4();
-
+	  Taktika_SIMA_CETVRTI_4();
 
 
 
