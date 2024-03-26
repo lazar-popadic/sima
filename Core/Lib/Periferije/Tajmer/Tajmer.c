@@ -100,11 +100,11 @@ TIM2_IRQHandler ()
 
       sys_time_ms++;
 
-      if(sys_time_ms >= 9500)
+      if(sys_time_ms >= 9500) //99500
       {
 //    	  ax_angle_move(ID_SIMA2_POGONSKI, 0, 0);
-//    	  ax_angle_move(ID_SIMA3_POGONSKI, 0, 0);
-    	  ax_angle_move(ID_SIMA4_POGONSKI, 0, 0);
+    	  ax_angle_move(ID_SIMA3_POGONSKI, 0, 0);
+//    	  ax_angle_move(ID_SIMA4_POGONSKI, 0, 0);
     	  while(1);
       }
     }

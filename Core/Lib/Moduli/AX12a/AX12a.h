@@ -11,13 +11,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define PRAVO 512 //512 //570
-#define LEVO 653  //653 //711
-#define LEVOPP 583 //583 //641
-#define LEVOPP1 547 //547 //605
-#define DESNO 381 //381 //439
-#define DESNOPP 447 //447  //505
-#define DESNOPP1 479 //479  //537
+#define PRAVO 511 //512 //570
+#define LEVO 651  //653 //711
+#define LEVOPP 582 //583 //641
+#define LEVOPP1 546 //547 //605
+#define DESNO 380 //381 //439
+#define DESNOPP 446 //447  //505
+#define DESNOPP1 478 //479  //537
 
 #define ID_SIMA2_POGONSKI 5
 #define ID_SIMA2_ZAKRETNI 6
