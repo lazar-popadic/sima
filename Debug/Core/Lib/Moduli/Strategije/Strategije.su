@@ -2,10 +2,10 @@
 ../Core/Lib/Moduli/Strategije/Strategije.c:184:6:tactic_yellow_2	16	static
 ../Core/Lib/Moduli/Strategije/Strategije.c:409:6:tactic_yellow_3	16	static
 ../Core/Lib/Moduli/Strategije/Strategije.c:633:6:tactic_blue_1	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:784:6:tactic_blue_2	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1009:6:tactic_blue_3	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1233:13:interrupted_func_stop	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1257:13:interrupted_func_right_forward_sideway	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1304:13:interrupted_func_right_diagonal_sideway	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1340:13:interrupted_func_left_forward_sideway	16	static
-../Core/Lib/Moduli/Strategije/Strategije.c:1386:13:interrupted_func_left_diagonal_sideway	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:786:6:tactic_blue_2	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1010:6:tactic_blue_3	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1234:13:interrupted_func_stop	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1253:13:interrupted_func_right_forward_sideway	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1300:13:interrupted_func_right_diagonal_sideway	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1336:13:interrupted_func_left_forward_sideway	16	static
+../Core/Lib/Moduli/Strategije/Strategije.c:1382:13:interrupted_func_left_diagonal_sideway	16	static
