@@ -364,7 +364,7 @@ void tactic_yellow_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		ax_wheel_mode(AX_Pogonski);
 		TajmerDelay(200);
 		ax_angle_move(AX_Pogonski, 0, 767);
-		TajmerDelay(250);
+		TajmerDelay(150);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
