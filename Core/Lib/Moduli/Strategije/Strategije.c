@@ -28,6 +28,167 @@ interrupted_func_left_forward_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 static void
 interrupted_func_left_diagonal_sideway(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
+void SIMA_homologacija (uint8_t AX_Pogonski, uint8_t AX_Zakretni)
+{
+	switch (tactic_state) {
+	case 0:
+		if (IO_cinc()) {
+			timer_start_sys_time();
+			tactic_state++;
+		}
+		break;
+	case 1:
+		TajmerDelay(90000); //90000  //200
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		ax_angle_move(AX_Zakretni, PRAVO, 200);
+		TajmerDelay(200);
+		ax_wheel_mode(AX_Pogonski);
+		TajmerDelay(200);
+		ax_angle_move(AX_Pogonski, 0, 512);
+		TajmerDelay(200);
+		ax_angle_move(AX_Pogonski, 0, 767);
+
+		tactic_state++;
+		break;
+
+	case 2:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state ++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 3:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state ++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 4:
+		sensors_case_timer = SENSOR_JJ;
+
+		if (interrupted) {
+
+			interrupted_func_stop(AX_Pogonski);
+			tactic_state ++;
+		} else {
+			ax_wheel_mode(AX_Pogonski);
+			TajmerDelay(100);
+			ax_angle_move(AX_Pogonski, 0, 1023);
+
+			TajmerDelay(150);
+			tactic_state++;
+		}
+	case 5:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	case 6:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	case 7:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	case 8:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	case 9:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	case 10:
+			sensors_case_timer = SENSOR_JJ;
+
+			if (interrupted) {
+
+				interrupted_func_stop(AX_Pogonski);
+				tactic_state ++;
+			} else {
+				ax_wheel_mode(AX_Pogonski);
+				TajmerDelay(100);
+				ax_angle_move(AX_Pogonski, 0, 1023);
+
+				TajmerDelay(150);
+				tactic_state++;
+			}
+	}
+}
+
 void tactic_yellow_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 	switch (tactic_state) {
 	case 0:
@@ -416,7 +577,7 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		break;
 
 	case 1:
-		TajmerDelay(200); //90000
+		TajmerDelay(90000); //90000  //200
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		TajmerDelay(200);
@@ -435,7 +596,7 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 2;
+			tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -450,7 +611,7 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 3;
+			tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -465,7 +626,7 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 4;
+			tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -480,7 +641,7 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 5;
+			tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -507,8 +668,8 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state +=5;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -522,8 +683,8 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state +=4;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -537,8 +698,8 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state +=3;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -552,8 +713,8 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_left_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state +=2;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -623,6 +784,21 @@ void tactic_yellow_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 				tactic_state++;
 			}
 	case 14:
+				sensors_case_timer = SENSOR_JJ;
+
+				if (interrupted) {
+
+					interrupted_func_stop(AX_Pogonski);
+					tactic_state ++;
+				} else {
+					ax_wheel_mode(AX_Pogonski);
+					TajmerDelay(100);
+					ax_angle_move(AX_Pogonski, 0, 1023);
+
+					TajmerDelay(150);
+					tactic_state++;
+				}
+	case 15:
 		ax_angle_move(AX_Pogonski, 0, 0);
 		break;
 	default:
@@ -1017,7 +1193,7 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		break;
 
 	case 1:
-		TajmerDelay(200); //90000
+		TajmerDelay(90000); //90000 //200
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		ax_angle_move(AX_Zakretni, PRAVO, 200);
 		TajmerDelay(200);
@@ -1036,7 +1212,7 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 2;
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1051,7 +1227,7 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 3;
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1066,7 +1242,7 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 4;
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1081,7 +1257,7 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 		if (interrupted) {
 
 			interrupted_func_stop(AX_Pogonski);
-			tactic_state = 5;
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1108,8 +1284,8 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state += 5;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1123,8 +1299,8 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state += 4;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1138,8 +1314,8 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state += 3;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1153,8 +1329,8 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state += 2;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1168,8 +1344,8 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state++;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
@@ -1183,12 +1359,12 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state++;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
-			ax_angle_move(AX_Pogonski, 0, 767);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
 			TajmerDelay(250);
 			tactic_state++;
@@ -1198,12 +1374,12 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 		if (interrupted) {
 
-			interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-			tactic_state++;
+			interrupted_func_stop(AX_Pogonski);
+						tactic_state ++;
 		} else {
 			ax_wheel_mode(AX_Pogonski);
 			TajmerDelay(100);
-			ax_angle_move(AX_Pogonski, 0, 767);
+			ax_angle_move(AX_Pogonski, 0, 1023);
 
 			TajmerDelay(150);
 			tactic_state++;
@@ -1213,17 +1389,32 @@ void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni) {
 
 			if (interrupted) {
 
-				interrupted_func_right_forward_sideway(AX_Pogonski, AX_Zakretni);
-				tactic_state++;
+				interrupted_func_stop(AX_Pogonski);
+							tactic_state ++;
 			} else {
 				ax_wheel_mode(AX_Pogonski);
 				TajmerDelay(100);
-				ax_angle_move(AX_Pogonski, 0, 767);
+				ax_angle_move(AX_Pogonski, 0, 1023);
 
 				TajmerDelay(150);
 				tactic_state++;
 			}
 	case 14:
+				sensors_case_timer = SENSOR_JJ;
+
+				if (interrupted) {
+
+					interrupted_func_stop(AX_Pogonski);
+								tactic_state ++;
+				} else {
+					ax_wheel_mode(AX_Pogonski);
+					TajmerDelay(100);
+					ax_angle_move(AX_Pogonski, 0, 1023);
+
+					TajmerDelay(150);
+					tactic_state++;
+				}
+	case 15:
 		ax_angle_move(AX_Pogonski, 0, 0);
 		break;
 	default:

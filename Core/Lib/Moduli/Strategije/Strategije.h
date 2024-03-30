@@ -18,5 +18,6 @@ void tactic_blue_1(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_blue_2(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 void tactic_blue_3(uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
+void SIMA_homologacija (uint8_t AX_Pogonski, uint8_t AX_Zakretni);
 
 #endif /* LIB_MODULI_STRATEGIJE_STRATEGIJE_H_ */
